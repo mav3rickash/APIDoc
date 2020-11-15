@@ -646,6 +646,98 @@
         ]
       }
     },
+    "/tasks/scheduled": {
+      "get": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "Get Scheduled Tasks",
+        "description": "Get the list of Scheduled Tasks",
+        "operationId": "getScheduled",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Pet object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/getScheduled"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "Delete Scheduled Task",
+        "description": "Delete the list of Scheduled Task",
+        "operationId": "deleteScheduled",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Schedule detail that needs to be deleted",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/deleteScheduled"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
     "/pet": {
       "post": {
         "tags": [
@@ -1723,6 +1815,42 @@
       },
       "xml": {
         "name": "AvailableWashers"
+      }
+    },
+    "getScheduled": {
+      "type": "object",
+      "required": [
+        "client"
+      ],
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "search": {
+          "type": "string"
+        },
+        "client": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "getScheduled"
+      }
+    },
+    "deleteScheduled": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "id of the scheduled task to be deleted"
+        }
+      },
+      "xml": {
+        "name": "getScheduled"
       }
     },
     "Order": {
