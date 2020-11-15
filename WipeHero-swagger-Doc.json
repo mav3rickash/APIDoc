@@ -405,6 +405,247 @@
         ]
       }
     },
+    "/admin/tasks": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Task edited by admin",
+        "description": "",
+        "operationId": "tasks",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Pet object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminTasks"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/admin/tasks/delete/{taskid}": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Task delete by admin",
+        "description": "",
+        "operationId": "tasks/delete",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskid",
+            "type": "integer",
+            "format": "int64",
+            "description": "Delete the agent details",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation successful",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/admin/tasks/create": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Tasks Created by Admin",
+        "description": "",
+        "operationId": "tasks/create",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Pet object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/admin/tasks/fields/{id}": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "List of fields for review of admin",
+        "description": "",
+        "operationId": "tasks/fields",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int64",
+            "description": "Task ID to retreive the fileds",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/admin/washers-availabilities": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Get the list of available washers for between the time",
+        "description": "",
+        "operationId": "tasks/washers-availabilities",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "name",
+            "description": "Task ID to retreive the fileds",
+            "schema": {
+              "$ref": "#/definitions/AvailableWashers"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
     "/pet": {
       "post": {
         "tags": [
@@ -1281,6 +1522,207 @@
           "type": "string",
           "description": "Agent Email Address"
         }
+      }
+    },
+    "AdminTasks": {
+      "type": "object",
+      "required": [
+        "taskId"
+      ],
+      "properties": {
+        "taskId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "email": {
+          "type": "string",
+          "description": "User's email address"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "clientId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "phone": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "options": {},
+        "search": {
+          "type": "string",
+          "description": ""
+        },
+        "download": {}
+      },
+      "xml": {
+        "name": "AdminTask"
+      }
+    },
+    "AdminCreate": {
+      "type": "object",
+      "required": [
+        "taskId"
+      ],
+      "properties": {
+        "address": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "available_datetime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "bookingType": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "carType": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "charged": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "clientId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "coupon": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "customerId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "email": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "extra": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "extra_note": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "finish_by_datetime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "hero_tookan_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "hideNumberPlate": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "lat": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "long": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "name": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "note": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "numberPlate": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "replace": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "phone": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "platform": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "referrer": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "repeatTask": {
+          "type": "boolean",
+          "default": false
+        },
+        "repeatTaskSettings": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "template_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        },
+        "usedBalance": {
+          "type": "boolean",
+          "default": false
+        },
+        "washType": {
+          "type": "string",
+          "description": "Address of the task to be performed"
+        }
+      },
+      "xml": {
+        "name": "AdminCreate"
+      }
+    },
+    "AvailableWashers": {
+      "type": "object",
+      "required": [
+        "startDate",
+        "endDate",
+        "id"
+      ],
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "xml": {
+        "name": "AvailableWashers"
       }
     },
     "Order": {
