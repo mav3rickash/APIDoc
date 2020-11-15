@@ -738,6 +738,158 @@
         ]
       }
     },
+    "/washerhome/document/delete": {
+      "get": {
+        "tags": [
+          "Washer Home"
+        ],
+        "summary": "Delete a document for the washer",
+        "description": "",
+        "operationId": "document/delete",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/washerhomedelete"
+            },
+            "description": "Task ID to retreive the fileds",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/washerhome/document/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Washer Home"
+        ],
+        "summary": "Delete a document for the washer",
+        "description": "",
+        "operationId": "document/deleteID",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int64",
+            "description": "Task ID to retreive the fileds",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/washerhome/edit-washer": {
+      "post": {
+        "tags": [
+          "Washer Home"
+        ],
+        "summary": "Delete a document for the washer",
+        "description": "",
+        "operationId": "edit-washer",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/editwasherhome"
+            },
+            "description": "Task ID to retreive the fileds",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
     "/pet": {
       "post": {
         "tags": [
@@ -1851,6 +2003,38 @@
       },
       "xml": {
         "name": "getScheduled"
+      }
+    },
+    "washerhomedelete": {
+      "type": "object",
+      "required": [
+        "washerId",
+        "fileName"
+      ],
+      "properties": {
+        "washerId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "fileName": {
+          "type": "string",
+          "description": "Name of the file in washer folder to be deleted"
+        }
+      }
+    },
+    "editwasherhome": {
+      "type": "object",
+      "xml": {
+        "name": "editwasherhome"
+      },
+      "properties": {
+        "data": {
+          "type": "string"
+        },
+        "deleteAvailabilities": {
+          "type": "boolean",
+          "default": false
+        }
       }
     },
     "Order": {
