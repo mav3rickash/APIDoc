@@ -890,6 +890,914 @@
         ]
       }
     },
+    "/account/clients": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Get the list of Clients",
+        "description": "",
+        "operationId": "getClients",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/getClients"
+            },
+            "description": "Task ID to retreive the fileds",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/account/edit-client/{id}": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Get the list of Clients",
+        "description": "",
+        "operationId": "editClient",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int64",
+            "description": "client ID to retrevie the data and edit",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/clientdetails"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/account/create-client": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Get the list of Clients",
+        "description": "",
+        "operationId": "createClient",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/getClients"
+            },
+            "description": "To create client in the backend. Edit the body and submit",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful "
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/account/locations": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Get the list of locations",
+        "description": "",
+        "operationId": "getAllLocations",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "operation successful "
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/account/locations/client/{id}": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Get the list of Client's location by client ID",
+        "description": "",
+        "operationId": "getClientLocations",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int64",
+            "description": "To get list of all locations from client, pass the client ID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/templates": {
+      "get": {
+        "tags": [
+          "Templates"
+        ],
+        "summary": "Get the list of Templates",
+        "description": "",
+        "operationId": "getAllTemplates",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Templates"
+        ],
+        "summary": "Add Template",
+        "description": "",
+        "operationId": "addTemplate",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/template"
+            },
+            "description": "To get list of all locations from client, pass the client ID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Templates"
+        ],
+        "summary": "Update Template",
+        "description": "",
+        "operationId": "updateTemplate",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/template"
+            },
+            "description": "To update the template, update the request body",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/templates/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Templates"
+        ],
+        "summary": "To delete a template enter the tempalte id",
+        "description": "",
+        "operationId": "deleteTemplateByID",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int64",
+            "description": "To Delete the template, Enter the ID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/templates/name/{id}": {
+      "get": {
+        "tags": [
+          "Templates"
+        ],
+        "summary": "To get the template names by ID",
+        "description": "",
+        "operationId": "getTemplateNameByID",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int64",
+            "description": "To Delete the template, Enter the ID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/templates/list": {
+      "get": {
+        "tags": [
+          "Templates"
+        ],
+        "summary": "Get the list of All Templates",
+        "description": "",
+        "operationId": "getAllTemplateList",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/audit/last": {
+      "get": {
+        "tags": [
+          "Audit"
+        ],
+        "summary": "Audit Last",
+        "description": "",
+        "operationId": "getLastAudit",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/audit/result": {
+      "put": {
+        "tags": [
+          "Audit"
+        ],
+        "summary": "Update Audit result",
+        "description": "",
+        "operationId": "updateAuditResult",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/auditResult"
+            },
+            "description": "Update the Audit Results",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/agent"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/audit/id/{id}": {
+      "get": {
+        "tags": [
+          "Audit"
+        ],
+        "summary": "Get Audit by ID",
+        "description": "",
+        "operationId": "getAuditByID",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int64",
+            "description": "Get Audit by ID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/auditResult"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/audit/list": {
+      "get": {
+        "tags": [
+          "Audit"
+        ],
+        "summary": "Audit List",
+        "description": "",
+        "operationId": "getAuditList",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/auditList"
+            },
+            "description": "Update the Audit Results",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/auditList"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/audit/listbyid": {
+      "get": {
+        "tags": [
+          "Audit"
+        ],
+        "summary": "Audit List",
+        "description": "",
+        "operationId": "getAuditListByID",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/auditListByID"
+            },
+            "description": "Update the Audit Results",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/auditList"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/audit/start": {
+      "put": {
+        "tags": [
+          "Audit"
+        ],
+        "summary": "Audit Start",
+        "description": "",
+        "operationId": "startAudit",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "schema": {
+              "$ref": "#/definitions/auditListByID"
+            },
+            "description": "Start Audit",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/auditList"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/audit/clock-in": {
+      "put": {
+        "tags": [
+          "Audit"
+        ],
+        "summary": "Clock-in Audit",
+        "description": "",
+        "operationId": "clockInAudit",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "schema": {
+              "$ref": "#/definitions/auditListByID"
+            },
+            "description": "Clock-in Audit",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/auditList"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
+    "/audit/clock-out": {
+      "put": {
+        "tags": [
+          "Audit"
+        ],
+        "summary": "Clock-out Audit",
+        "description": "",
+        "operationId": "clockOutAudit",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "schema": {
+              "$ref": "#/definitions/auditListByID"
+            },
+            "description": "Clock-out Audit",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/auditList"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "wipehero_auth": [
+              "write:agent",
+              "read:agent"
+            ]
+          }
+        ]
+      }
+    },
     "/pet": {
       "post": {
         "tags": [
@@ -2032,6 +2940,178 @@
           "type": "string"
         },
         "deleteAvailabilities": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "getClients": {
+      "type": "object",
+      "xml": {
+        "name": "getClients"
+      },
+      "properties": {
+        "search": {
+          "type": "string"
+        }
+      }
+    },
+    "clientdetails": {
+      "type": "object",
+      "xml": {
+        "name": "clientdetails"
+      },
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "User Name"
+        },
+        "password": {
+          "type": "string",
+          "description": "User's saved password"
+        },
+        "email": {
+          "type": "string",
+          "description": "Emai address"
+        },
+        "prefix": {
+          "type": "string",
+          "description": "Salutation"
+        },
+        "billing_enabled": {
+          "type": "string",
+          "description": "Billing Address"
+        },
+        "billing_name": {
+          "type": "string",
+          "description": "Billing Name"
+        },
+        "first_billing_period_start": {
+          "type": "string",
+          "description": "Start date of billing",
+          "format": "date-time"
+        },
+        "billing_period_length": {
+          "type": "string",
+          "description": "Duration of billing, Weekly, fortnightly, monthly "
+        },
+        "automate_billing": {
+          "type": "boolean",
+          "default": false
+        },
+        "active": {
+          "type": "boolean",
+          "default": true
+        },
+        "datas": {
+          "type": "string",
+          "description": ""
+        },
+        "washDetails": {
+          "type": "string",
+          "description": "Check this xxxxxxxxx"
+        },
+        "user_type": {
+          "type": "string",
+          "description": ""
+        }
+      }
+    },
+    "template": {
+      "type": "object",
+      "xml": {
+        "name": "template"
+      },
+      "properties": {
+        "parent": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "expectations": {
+          "type": "string"
+        },
+        "setting": {
+          "type": "string"
+        },
+        "id\"": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "auditResult": {
+      "type": "object",
+      "xml": {
+        "name": "AuditResult"
+      },
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "result": {
+          "type": "string"
+        }
+      }
+    },
+    "auditList": {
+      "type": "object",
+      "xml": {
+        "name": "auditList"
+      },
+      "properties": {
+        "page": {
+          "type": "string"
+        },
+        "perPage": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "locationId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "technicianId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "auditListByID": {
+      "type": "object",
+      "xml": {
+        "name": "auditListByID"
+      },
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "templates": {
+      "type": "object",
+      "xml": {
+        "name": "xxx"
+      },
+      "properties": {
+        "data": {
+          "type": "string"
+        },
+        "xxx": {
           "type": "boolean",
           "default": false
         }
